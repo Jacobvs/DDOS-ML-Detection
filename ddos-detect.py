@@ -7,7 +7,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.models import Sequential
 from keras.utils import to_categorical
 
-file = open("data/final-dataset-short.arff", 'r')
+file = open("data/final-dataset.arff", 'r')
 
 
 # print(type(d))
@@ -27,7 +27,7 @@ def generate_model(shape):
 
     model = Sequential()
 
-    model.add(Dense(26, input_dim=27, activation='relu'))
+    model.add(Dense(22, input_dim=shape, activation='relu'))
     model.add(Dropout(0.15))
     model.add(Dense(45, activation='relu'))
     model.add(Dropout(0.2))
@@ -38,7 +38,8 @@ def generate_model(shape):
     model.add(Dense(26, activation='relu'))
     print(model.summary())
     model.add(Dropout(0.15))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(5, activation='sigmoid'))
+    print(model.summary())
 
     return model
 
@@ -58,10 +59,11 @@ def scrape_data():
     training_data = vals[0: int(.9 * len(vals))]
     training_labels = labels[0: int(.9 * len(vals))]
     validation_data = vals[int(.9 * len(vals)):]
-    validation_labels = vals[int(.9 * len(vals)):]
+    validation_labels = labels[int(.9 * len(vals)):]
 
     print(training_labels)
     training_labels = to_categorical(training_labels, 5)
+    validation_labels = to_categorical(validation_labels, 5)
     print(training_labels.shape)
 
     np.save('saved-data/vals', np.asarray(vals))
@@ -71,16 +73,23 @@ def scrape_data():
     np.save('saved-data/training_labels', np.asarray(training_labels))
     np.save('saved-data/validation_labels', np.asarray(validation_labels))
 
-scrape_data()
+#scrape_data()
+if not os.path.exists('saved-data/labels'):
+    print('creating')
+    if not os.path.exists('saved-data'):
+        os.mkdir('saved-data')
+    scrape_data()
+
 data_train = np.load('saved-data/training_data.npy')
 label_train = np.load('saved-data/training_labels.npy')
 
 data_eval = np.load('saved-data/validation_data.npy')
 label_eval = np.load('saved-data/validation_labels.npy')
 
+print(data_train[0])
 
-model = generate_model(data_train.shape[0])
-model.compile(loss='categorical_crossentropy', optimizer='adam')
+model = generate_model(len(data_train[0]))
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit(data_train, label_train, epochs=5)
 
