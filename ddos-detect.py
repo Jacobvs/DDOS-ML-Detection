@@ -23,10 +23,11 @@ file = open("data/final-dataset-short.arff", 'r')
 
 
 def generate_model(shape):
+    print(shape)
 
     model = Sequential()
 
-    model.add(Dense(26, input_shape=(shape, 27), activation='relu'))
+    model.add(Dense(26, input_dim=27, activation='relu'))
     model.add(Dropout(0.15))
     model.add(Dense(45, activation='relu'))
     model.add(Dropout(0.2))
@@ -60,6 +61,8 @@ def scrape_data():
     validation_labels = vals[int(.9 * len(vals)):]
 
     print(training_labels)
+    training_labels = to_categorical(training_labels, 5)
+    print(training_labels.shape)
 
     np.save('saved-data/vals', np.asarray(vals))
     np.save('saved-data/labels', np.asarray(labels))
