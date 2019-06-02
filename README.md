@@ -2,7 +2,7 @@
 This project uses a simple feedforward network built in keras to determine if incoming network packets are from one of four types of ddos attacks or are a normal request. 
 
 # Model Structure: 
-![model](https://https://raw.githubusercontent.com/jacobvs/DDOS-ML-Detection/master/model.png)
+![model](https://raw.githubusercontent.com/jacobvs/DDOS-ML-Detection/master/model.png)
 
 # Data attributes:
 @attribute SRC_ADD numeric
