@@ -40,4 +40,4 @@ This project uses a simple feedforward network built in keras to determine if in
 
 # Model accuracy:
 Training loss & accuracy: [1.6756146636651195, 0.8960413987239542]
-![model_accuracy](https://https://raw.githubusercontent.com/jacobvs/DDOS-ML-Detection/master/model_accuracy.jpg)
+![model_accuracy](https://raw.githubusercontent.com/jacobvs/DDOS-ML-Detection/master/model_accuracy.jpg)
