@@ -1,6 +1,10 @@
 # DDOS-ML-Detection
 This project uses a simple feedforward network built in keras to determine if incoming network packets are from one of four types of ddos attacks or are a normal request. 
 
+# Dataset Download:
+You can download the dataset used in this project here:
+[Dataset link](https://drive.google.com/drive/folders/1BqMKyKUgc1U6hpfzsAAKODyG_6bAChU_?usp=sharing)
+
 # Model Structure: 
 ![model](https://raw.githubusercontent.com/jacobvs/DDOS-ML-Detection/master/model.png)
 
