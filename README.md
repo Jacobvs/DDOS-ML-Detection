@@ -1,5 +1,11 @@
 # DDOS-ML-Detection
-This project uses a simple feedforward network built in keras to determine if incoming network packets are from one of four types of ddos attacks or are a normal request. 
+This project uses a simple feedforward network built in keras to determine if incoming network packets are from one of four types of ddos attacks or are a normal request.
+
+# Requirements
+- Keras
+- Numpy
+- [Arff decoder](https://github.com/renatopp/liac-arff)
+- Matplotlib
 
 # Dataset Download:
 You can download the dataset used in this project here:
